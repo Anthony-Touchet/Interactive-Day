@@ -29,9 +29,13 @@ namespace Assets.Scripts.Player
             float vertical = Input.GetAxis("Vertical");
             float horizontal = Input.GetAxis("Horizontal");
 
-            Vector3 newPos = transform.position + (transform.forward * Speed * vertical) 
-                + (transform.right * Speed * horizontal);
+            Vector3 movement = ((transform.forward * Speed * vertical) + (transform.right * Speed * horizontal)) * Time.deltaTime;
+            Vector3 newPos = transform.position + movement;
             rigidbody.MovePosition(newPos);
+
+            float look = Input.GetAxis("Mouse X");
+            Quaternion deltaRotation = Quaternion.Euler(30 * new Vector3(0, look, 0) * Time.deltaTime);
+            rigidbody.MoveRotation(rigidbody.rotation * deltaRotation);
         }
     }
 }

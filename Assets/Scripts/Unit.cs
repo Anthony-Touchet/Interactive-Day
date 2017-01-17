@@ -11,9 +11,9 @@ namespace Assets.Scripts
 {
     using UnityEngine;
 
-    public class Unit : MonoBehaviour
+    public class Unit : MonoBehaviour, IDamagable
     {
-        public int Health;
+        public int Health { get; set; }
 
         // This is the first call of the Script. Best place to set Values
         public void Awake()
@@ -36,7 +36,7 @@ namespace Assets.Scripts
         {
             // This is where we will say what happens when the Bullet collides
             // with this GameObject.
-            if (other.gameObject.GetComponent<Bullet>() != null)
+            if (other.gameObject.GetComponent<IDamager>() != null)
             {
                 Health -= other.gameObject.GetComponent<Bullet>().Damage;
                 Destroy(other.gameObject);

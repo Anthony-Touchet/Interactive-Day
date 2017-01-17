@@ -3,7 +3,7 @@
 //   CODE HARD EVERY DAY
 // </copyright>
 // <summary>
-//   T
+//   This script will handel the player shooting
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -37,8 +37,14 @@ namespace Assets.Scripts.Player
 
             GameObject bullet;
             bullet = Instantiate(BulletPrefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation) as GameObject;
+            if (bullet == null)
+            {
+                return;
+            }
+
             bullet.GetComponent<Bullet>().Damage = BulletDamage;
             bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * BulletForce);
+
             timeAlive = 0f; // Reset Time to next bullet fire.
         }
 
