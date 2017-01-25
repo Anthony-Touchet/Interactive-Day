@@ -12,44 +12,44 @@ namespace Assets.Scripts
     using Player;
     using UnityEngine;
 
+    /// <summary>
+    /// The enemy ai controller. Used for moving the GameObject it is on
+    /// </summary>
+    // ReSharper disable once InconsistentNaming
     public class EnemyAI : MonoBehaviour
     {
-        public Transform TargetTransform;
-        public float MaxSpeed;
-        private Vector3 desiredVelocity;
-        private Vector3 steering;
-        private Rigidbody rb;
-        private Vector3 velocity;
+        /// <summary>
+        /// The velocity of the Enemy.
+        /// </summary>
+        [HideInInspector]
+        public Vector3 Velocity;
 
-        // This is the first call of the Script. Best place to set Values
+        /// <summary>
+        /// The mass of the object.
+        /// </summary>
+        public float Mass = 1f;
+
+        /// <summary>
+        /// The Rigid Body of the Object
+        /// </summary>
+        private Rigidbody rb;
+
+        /// <summary>
+        /// Setting the Rigid Body.
+        /// </summary>
         public void Awake()
         {
-            if (FindObjectOfType<PlayerMovement>() != null)
-            {
-                TargetTransform = FindObjectOfType<PlayerMovement>().gameObject.transform;
-                rb = GetComponent<Rigidbody>();
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            rb = GetComponent<Rigidbody>();
         }
 
-        // Update is called once per frame. 
-        public void FixedUpdate()
+        /// <summary>
+        /// The late update that actually moves to Object.
+        /// </summary>
+        public void LateUpdate()
         {
-            desiredVelocity = (TargetTransform.position - transform.position).normalized;
-            steering = (desiredVelocity - rb.velocity).normalized;
-            velocity += steering / 1f;
-
-            // Limit Velocity
-            if (velocity.magnitude > MaxSpeed)
-            {
-                velocity = velocity.normalized * MaxSpeed;
-            }
-
-            transform.position += velocity * Time.deltaTime;
-            transform.LookAt(TargetTransform);
+            // Were we will sum up all of the vectors.
+            transform.forward = Velocity.normalized;
+            rb.position += transform.forward * Velocity.magnitude * Time.deltaTime;
         }
     }
 }

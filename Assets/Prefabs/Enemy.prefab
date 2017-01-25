@@ -119,9 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c58f64064abc9e4d8a47540dd3750d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeed: 10
-  CanAttack: 1
-  TimeTillNextAttack: 0
   health: 10
   damage: 0
 --- !u!114 &114000012755239098

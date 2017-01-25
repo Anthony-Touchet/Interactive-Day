@@ -29,7 +29,7 @@ namespace Assets.Scripts.Player
             {
                 timeSinceDrop += Time.deltaTime;
             }
-            else if (bomb == null && Input.GetKeyUp(KeyCode.Space))
+            else if (bomb == null && Input.GetAxis("Fire2") >= 1.0f)
             {
                 var playerPosition = transform.position;
                 var playerVelocity = GetComponent<Rigidbody>().velocity;
