@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Interfaces.cs" company="Anthony">
-//   CODE HARD EVERY DAY
+//   CODE HAR EVERY DAY
 // </copyright>
 // <summary>
-//   
+//   Defines the IDamager type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -17,5 +17,7 @@ namespace Assets.Scripts
     public interface IDamagable
     {
         int Health { get; set; }
+
+        void TakeDamage(int dam);
     }
 }

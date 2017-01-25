@@ -15,6 +15,7 @@ namespace Assets.Scripts.Player
     public class PlayerMovement : MonoBehaviour
     {
         public float Speed;
+        public int LookSensitivity = 50;
         private new Rigidbody rigidbody;
         
         // This is the first call of the Script. Best place to set Values
@@ -34,7 +35,7 @@ namespace Assets.Scripts.Player
             rigidbody.MovePosition(newPos);
 
             float look = Input.GetAxis("Mouse X");
-            Quaternion deltaRotation = Quaternion.Euler(30 * new Vector3(0, look, 0) * Time.deltaTime);
+            Quaternion deltaRotation = Quaternion.Euler(LookSensitivity * new Vector3(0, look, 0) * Time.deltaTime);
             rigidbody.MoveRotation(rigidbody.rotation * deltaRotation);
         }
     }

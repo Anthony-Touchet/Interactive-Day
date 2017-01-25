@@ -35,8 +35,7 @@ namespace Assets.Scripts.Player
                 return;
             }
 
-            GameObject bullet;
-            bullet = Instantiate(BulletPrefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation) as GameObject;
+            var bullet = Instantiate(BulletPrefab, BulletSpawnPoint.position, BulletSpawnPoint.rotation) as GameObject;
             if (bullet == null)
             {
                 return;

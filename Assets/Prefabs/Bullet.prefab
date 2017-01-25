@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e492e841e816ec4bab8a7a3cb9b3fb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
   LifeTime: 1
 --- !u!135 &135000010371450960
 SphereCollider:
@@ -115,7 +114,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010022034008}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

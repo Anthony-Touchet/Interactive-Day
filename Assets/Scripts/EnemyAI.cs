@@ -16,10 +16,10 @@ namespace Assets.Scripts
     {
         public Transform TargetTransform;
         public float MaxSpeed;
-        private Vector3 desiredVelocity = new Vector3();
+        private Vector3 desiredVelocity;
         private Vector3 steering;
         private Rigidbody rb;
-        private Vector3 velocity = new Vector3();
+        private Vector3 velocity;
 
         // This is the first call of the Script. Best place to set Values
         public void Awake()
@@ -48,7 +48,8 @@ namespace Assets.Scripts
                 velocity = velocity.normalized * MaxSpeed;
             }
 
-            rb.position += velocity * Time.deltaTime;
+            transform.position += velocity * Time.deltaTime;
+            transform.LookAt(TargetTransform);
         }
     }
 }

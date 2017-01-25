@@ -27,6 +27,11 @@ namespace Assets.Scripts
             }
 
             timeAlive += Time.deltaTime;
-        }     
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            Destroy(gameObject);
+        }
     }
 }
